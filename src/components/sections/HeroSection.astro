@@ -1,0 +1,29 @@
+---
+/**
+ * HeroSection 组件
+ * 首屏核心展示区域，包含个人简介、博客入口和主要社交链接
+ */
+import IntroCard from "../cards/IntroCard.astro";
+import BlogCard from "../cards/BlogCard.astro";
+import SocialCard from "../cards/SocialCard.astro";
+
+interface Props {
+  titleCard: any;
+  blogCard: any;
+  primaryCards: any[];
+}
+
+const { titleCard, blogCard, primaryCards } = Astro.props;
+---
+
+<!-- 核心卡片 -->
+<div class="col-span-4 md:col-span-2">
+  <IntroCard {...titleCard} />
+  <BlogCard {...blogCard} />
+</div>
+
+<div class="hidden md:block col-span-2">
+  {primaryCards.slice(0, 4).map((card) => (
+    <SocialCard {...card} />
+  ))}
+</div>

@@ -1,0 +1,29 @@
+---
+/**
+ * SectionCard 组件
+ * 用于页面的大标题分隔块
+ */
+interface Props {
+  title: string;      // 标题文本 (如 "📝 博客文章")
+  className?: string; // 额外的自定义类名
+  bgStyle?: string;   // 自定义背景样式
+}
+
+const { 
+  title, 
+  className = "",
+  bgStyle = "bg-primary"
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "card max-lg:card-compact rounded-xl flex justify-center shadow-xl shadow-accent w-full lg:w-[54rem] lg:h-[5rem] mb-8",
+    bgStyle,
+    className
+  ]}
+>
+  <div class="card-body py-4">
+    <h2 class="card-title text-2xl font-bold text-white opacity-90">{title}</h2>
+  </div>
+</div>

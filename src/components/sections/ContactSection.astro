@@ -1,0 +1,42 @@
+---
+/**
+ * ContactSection 组件
+ * 联系方式和移动端社交链接区域
+ */
+import SectionCard from "../cards/SectionCard.astro";
+import ContactCard from "../cards/ContactCard.astro";
+import SocialCard from "../cards/SocialCard.astro";
+
+interface Props {
+  socialTitleInfo: any;
+  primaryCards: any[];
+  contactTitleInfo: any;
+  teleCards: any[];
+}
+
+const { socialTitleInfo, primaryCards, contactTitleInfo, teleCards } = Astro.props;
+---
+
+<!-- 关注翠翠 (移动端专用) -->
+<div class="md:hidden col-span-4">
+  <SectionCard {...socialTitleInfo} />
+</div>
+{
+  primaryCards.map((card) => (
+    <div class="md:hidden sm:col-span-2 col-span-4">
+      <SocialCard {...card} />
+    </div>
+  ))
+}
+
+<!-- 联系方式 -->
+<div class="col-span-4">
+  <SectionCard {...contactTitleInfo} />
+</div>
+{
+  teleCards.map((card) => (
+    <div class="col-span-4 md:col-span-2">
+      <ContactCard {...card} />
+    </div>
+  ))
+}

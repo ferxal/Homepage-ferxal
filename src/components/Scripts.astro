@@ -1,0 +1,34 @@
+---
+/**
+ * Scripts 组件
+ * 集中管理页面所需的客户端脚本
+ */
+---
+
+<script>
+  import updateInfo from "../data/update";
+  import locale from "../data/locales/zh";
+
+  /**
+   * 更新粉丝数逻辑
+   */
+  function updateFollowerCounts() {
+    updateInfo.forEach((item) => {
+      fetch(item.updateUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const element = document.querySelector(`.${item.className}`);
+          if (data.count == null) return;
+          if (element) {
+            element.textContent = data.count + locale.scripts.followersSuffix;
+          }
+        })
+        .catch((error) => console.error(`Error updating ${item.className}:`, error));
+    });
+  }
+
+  // 页面加载完成后执行
+  document.addEventListener("DOMContentLoaded", () => {
+    updateFollowerCounts();
+  });
+</script>

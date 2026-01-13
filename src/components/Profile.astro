@@ -1,0 +1,29 @@
+---
+/**
+ * Profile 组件
+ * 侧边栏用户信息展示
+ */
+interface Props {
+  imgUrl: string;
+  title: string;
+  desc: string;
+}
+
+const { imgUrl, title, desc } = Astro.props;
+---
+
+<aside
+  class="min-w-full md:min-w-0 xl:basis-1/3 xl:h-screen xl:sticky xl:top-0"
+>
+  <div class="pt-10 xl:pt-20"></div>
+  <div class="w-64">
+    <img
+      class="w-32 h-32 md:w-52 md:h-52 rounded-full shadow-lg shadow-accent/20 transition-transform duration-500 hover:rotate-12"
+      src={imgUrl}
+      alt={title}
+    />
+    <div class="pt-10"></div>
+    <h1 class="text-4xl font-bold pl-2 text-primary">{title}</h1>
+    <p class="text-lg pl-2 opacity-80 mt-2">{desc}</p>
+  </div>
+</aside>

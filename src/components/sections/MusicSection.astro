@@ -1,0 +1,27 @@
+---
+/**
+ * MusicSection 组件
+ * 音乐展示区域
+ */
+import SectionCard from "../cards/SectionCard.astro";
+import MusicCard from "../cards/MusicCard.astro";
+
+interface Props {
+  titleInfo: any;
+  musicCards: any[];
+}
+
+const { titleInfo, musicCards } = Astro.props;
+---
+
+<div class="col-span-4">
+  <SectionCard {...titleInfo} />
+</div>
+
+{
+  musicCards.map((card) => (
+    <div class="col-span-4 md:col-span-2">
+      <MusicCard {...card} />
+    </div>
+  ))
+}

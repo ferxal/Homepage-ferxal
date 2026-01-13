@@ -1,5 +1,6 @@
 ---
 import articlesList from "../data/articles_list";
+import locale from "../data/locales/zh";
 ---
 
 <div
@@ -47,7 +48,7 @@ import articlesList from "../data/articles_list";
               href={articles.url}
               target="_blank"
             >
-              查看更多
+              {locale.articleList.viewMore}
             </a>
           </div>
         </div>

@@ -1,0 +1,60 @@
+---
+/**
+ * DiarySection 组件
+ * 封装生活日记区域的响应式布局逻辑（移动端横向滚动，桌面端网格）
+ */
+import SectionCard from "../cards/SectionCard.astro";
+import DiaryCard from "../cards/DiaryCard.astro";
+
+interface Props {
+  titleInfo: any;
+  cards: any[];
+}
+
+const { titleInfo, cards } = Astro.props;
+---
+
+<div class="col-span-4">
+  <SectionCard {...titleInfo} />
+</div>
+
+<div class="col-span-4 overflow-x-auto scrollbar-hide">
+  <!-- 移动端：横向滚动卡片 -->
+  <div
+    class="flex flex-nowrap gap-4 pb-4 md:hidden"
+    style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;"
+  >
+    {
+      cards.map((card) => (
+        <div
+          class="flex-none w-[55%] scroll-snap-align-start"
+          style="scroll-snap-align: start;"
+        >
+          <DiaryCard {...card} />
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- 桌面端：4列网格 -->
+  <div class="hidden md:grid md:grid-cols-4 gap-x-4 lg:gap-x-8">
+    {
+      cards.map((card) => (
+        <div class="col-span-1">
+          <DiaryCard {...card} />
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  /* 隐藏滚动条但保留滚动功能 */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+</style>

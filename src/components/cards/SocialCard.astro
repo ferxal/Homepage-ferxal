@@ -1,0 +1,74 @@
+---
+/**
+ * SocialCard 组件
+ * 社交平台链接卡片，支持图标和粉丝数动态显示
+ */
+interface Props {
+  title: string;      // 平台名称
+  url: string;        // 链接
+  bgStyle?: string;   // 背景样式
+  textStyle?: string; // 文本样式
+  btnText?: string;   // 按钮文案 (通常是粉丝数)
+  btnStyle?: string;  // 按钮样式类名 (用于动态更新)
+  iconClass?: string; // 图标类名
+  className?: string; // 额外的自定义类名
+}
+
+const { 
+  title, 
+  url, 
+  bgStyle = "bg-white", 
+  textStyle = "", 
+  btnText = "", 
+  btnStyle = "", 
+  iconClass = "",
+  className = ""
+} = Astro.props;
+---
+
+<a href={url} target="_blank" class:list={["block", className]}>
+  <div
+    class:list={[
+      "card max-lg:card-compact rounded-xl flex justify-center shadow-xl shadow-accent w-full lg:w-[26rem] md:h-[4.25rem] lg:h-[5rem] mb-8 transition-all duration-300 hover:scale-[1.02]",
+      bgStyle,
+    ]}
+  >
+    <div class="card-body justify-center py-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center">
+          {iconClass && <div class:list={[iconClass, "w-8 h-8 mr-3"]} />}
+          <span
+            class:list={[
+              textStyle,
+              "text-lg font-medium whitespace-nowrap",
+            ]}
+          >
+            {title}
+          </span>
+        </div>
+        {
+          btnText && (
+            <span class:list={[btnStyle, "text-sm opacity-80"]}>
+              {btnText}
+            </span>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</a>
+
+<style>
+  .zhihu, .bili, .github, .netease, .jike, .coolapk, .sspai, .Steam {
+    background: url("https://image.idealclover.cn/projects/Homepage/icons/icons.png") no-repeat;
+    background-size: 512px 512px;
+  }
+  .zhihu { background-position: -416px -0px; }
+  .bili { background-position: -448px -0px; }
+  .github { background-position: -480px -0px; }
+  .jike { background-position: -256px -0px; }
+  .coolapk { background-position: -288px -0px; }
+  .sspai { background-position: -320px -0px; }
+  .Steam { background-position: -352px -0px; }
+  .netease { background-position: -384px -0px; }
+</style>

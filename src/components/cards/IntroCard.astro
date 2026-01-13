@@ -1,0 +1,49 @@
+---
+/**
+ * IntroCard 组件
+ * 用于展示个人的核心介绍信息，通常位于页面顶部
+ */
+interface Props {
+  title: string;     // 姓名/昵称
+  desc: string;      // 职位/身份
+  subdesc?: string;  // 学历/详细描述
+  url: string;       // 跳转链接
+  bgStyle?: string;  // 背景样式 (Tailwind classes)
+  btnText?: string;  // 按钮文案
+  className?: string; // 额外的自定义类名
+}
+
+const { 
+  title, 
+  desc, 
+  subdesc, 
+  url, 
+  bgStyle = "bg-primary", 
+  btnText = "了解更多",
+  className = ""
+} = Astro.props;
+---
+
+<a href={url} target="_blank" class:list={["block group", className]}>
+  <div
+    class:list={[
+      "card max-lg:card-compact rounded-2xl shadow-xl w-full md:h-[10.5rem] lg:w-[26rem] lg:h-[12rem] mb-8 transition-all duration-300",
+      bgStyle,
+    ]}
+  >
+    <div class="card-body rounded-2xl group-hover:glass transition-all duration-300">
+      <h2 class="card-title text-2xl font-bold whitespace-nowrap">{title}</h2>
+      <p class="text-sm opacity-90 leading-relaxed">
+        {desc}<br />
+        {subdesc && <span class="opacity-75">{subdesc}</span>}
+      </p>
+      {btnText && (
+        <div class="card-actions justify-end">
+          <button class="btn btn-sm rounded-xl border-0 bg-opacity-20 hover:bg-opacity-30">
+            {btnText}
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+</a>

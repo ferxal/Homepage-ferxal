@@ -1,0 +1,99 @@
+---
+/**
+ * ProjectCard 组件
+ * 用于展示个人开发的软件项目，支持“推荐”大尺寸和“普通”小尺寸
+ */
+interface Props {
+  title: string;       // 项目名称
+  desc: string;        // 简短描述
+  fulldesc?: string;   // 完整描述 (用于移动端或大卡片)
+  subdesc?: string;    // 辅助描述 (如平台信息)
+  url: string;         // 项目链接
+  btnText?: string;     // 按钮文案
+  bgStyle?: string;     // 背景样式 (支持图片背景)
+  textStyle?: string;  // 文本样式
+  btnStyle?: string;   // 按钮样式
+  btnTextStyle?: string; // 按钮文本样式
+  isFeatured?: boolean;  // 是否为推荐项目 (4x2 尺寸)
+  className?: string;   // 额外的自定义类名
+}
+
+const { 
+  title, 
+  desc, 
+  fulldesc, 
+  subdesc, 
+  url, 
+  btnText = "查看详情", 
+  bgStyle = "bg-primary", 
+  textStyle = "", 
+  btnStyle = "bg-opacity-20 hover:bg-opacity-30", 
+  btnTextStyle = "", 
+  isFeatured = false,
+  className = ""
+} = Astro.props;
+---
+
+<a href={url} target="_blank" class:list={["block group", className]}>
+  <div
+    class:list={[
+      "card max-lg:card-compact rounded-2xl shadow-xl transition-all duration-300 mb-8",
+      isFeatured
+        ? "w-full md:h-[10.5rem] lg:w-[26rem] lg:h-[12rem]"
+        : "w-full md:aspect-[1/1] lg:w-[12rem] lg:h-[12rem]",
+      bgStyle,
+    ]}
+  >
+    <div class="card-body rounded-2xl group-hover:glass transition-all duration-300">
+      <h2
+        class:list={[
+          "card-title whitespace-nowrap font-bold",
+          isFeatured ? "text-2xl" : "text-lg sm:text-xl",
+          textStyle,
+        ]}
+      >
+        {title}
+      </h2>
+
+      {/* 描述信息：推荐卡片显示多行，普通卡片根据屏幕尺寸切换 */}
+      <div class:list={["text-sm leading-relaxed", textStyle]}>
+        {
+          isFeatured ? (
+            <p>
+              {desc}
+              <br />
+              <span class="opacity-75">{subdesc}</span>
+            </p>
+          ) : (
+            <>
+              <p class="max-sm:hidden opacity-90">
+                {desc}
+                <br />
+                <span class="opacity-75">{subdesc}</span>
+              </p>
+              <p class="sm:hidden opacity-90">
+                {fulldesc || desc}
+                <br />
+                <span class="opacity-75">{subdesc}</span>
+              </p>
+            </>
+          )
+        }
+      </div>
+
+      <div class="grow"></div>
+
+      <div class="card-actions justify-end">
+        <button
+          class:list={[
+            "btn btn-sm rounded-xl border-0",
+            btnStyle,
+            btnTextStyle,
+          ]}
+        >
+          {btnText}
+        </button>
+      </div>
+    </div>
+  </div>
+</a>

@@ -1,7 +1,7 @@
 export default {
   title: "idealclover",
   desc: "Stay simple, stay naive.",
-  imgUrl: "https://cdn.idealclover.cn/Projects/homepage/icon.png",
+  imgUrl: "/favicons/avatar.png",
   location: "Beijing, China",
   titleCard: {
     title: "翠翠 @idealclover",

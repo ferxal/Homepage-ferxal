@@ -1,0 +1,37 @@
+---
+/**
+ * ProjectSection 组件
+ * 项目展示区域，包含标题和不同尺寸的项目卡片网格
+ */
+import SectionCard from "../cards/SectionCard.astro";
+import ProjectCard from "../cards/ProjectCard.astro";
+
+interface Props {
+  titleInfo: any;
+  projectCardStart: any;
+  projectCards: any[];
+  projectCardEnd: any;
+}
+
+const { titleInfo, projectCardStart, projectCards, projectCardEnd } = Astro.props;
+---
+
+<div class="col-span-4">
+  <SectionCard {...titleInfo} />
+</div>
+
+<div class="col-span-4 md:col-span-2">
+  <ProjectCard {...projectCardStart} isFeatured={true} />
+</div>
+
+{
+  projectCards.map((card) => (
+    <div class="col-span-4 sm:col-span-2 md:col-span-1">
+      <ProjectCard {...card} />
+    </div>
+  ))
+}
+
+<div class="col-span-4 md:col-span-2">
+  <ProjectCard {...projectCardEnd} isFeatured={true} />
+</div>
