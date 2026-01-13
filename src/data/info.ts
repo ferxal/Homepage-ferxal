@@ -1,8 +1,9 @@
 export default {
-  title: "idealclover",
-  desc: "Stay simple, stay naive.",
+  title: "Ferxal",
+  desc: "一个独立开发者",
   imgUrl: "/favicons/avatar.png",
-  location: "Beijing, China",
+  location: "GuangDong, China",
+  bangumiUserId: "ferxal987", // 替换为你的 Bangumi 用户名
   titleCard: {
     title: "翠翠 @idealclover",
     desc: "产品经理/独立开发者/个人博主",
@@ -61,18 +62,10 @@ export default {
   ],
   primaryCards: [
     {
-      title: "知乎",
-      url: "https://www.zhihu.com/people/cuicuijiang",
-      bgStyle:
-        "bg-[#0275D2] shadow-[#0275D2]/75 hover:bg-[#0275D2]/75 hover:shadow-[#0275D2]",
-      btnText: "2916 Followers",
-      textStyle: "text-white",
-      btnStyle: "zhihu text-white",
-    },
-    {
       title: "Bilibili",
-      url: "https://space.bilibili.com/5044093",
-      btnText: "1686 Followers",
+      url: "https://space.bilibili.com/1197710906",
+      btnText: "",
+      icon: "/icons/bilibili.svg",
       bgStyle:
         "bg-[#FB7299] shadow-[#FB7299]/75 hover:bg-[#FB7299]/75 hover:shadow-[#FB7299]",
       btnStyle: "bili text-white",
@@ -80,20 +73,12 @@ export default {
     },
     {
       title: "GitHub",
-      url: "https://github.com/idealclover",
-      btnText: "808 Followers",
+      url: "https://github.com/ferxal",
+      btnText: "",
+      icon: "/icons/github-fill.svg",
       bgStyle:
         "bg-[#181717] shadow-[#181717]/75 hover:bg-[#181717]/75 hover:shadow-[#181717]",
       btnStyle: "github text-white",
-      textStyle: "text-white",
-    },
-    {
-      title: "即刻",
-      url: "https://web.okjike.com/u/e2ede1ee-79e6-420b-92fc-9983566db44c",
-      btnText: "537 Followers",
-      bgStyle:
-        "bg-[#FFE411] shadow-[#C9A705]/75 hover:bg-[#C9A705]/75 hover:shadow-[#C9A705]",
-      btnStyle: "text-white",
       textStyle: "text-white",
     },
     // {
@@ -120,7 +105,10 @@ export default {
       title: "🎼 音乐创作",
     },
     {
-      title: "👋 关注翠翠",
+      title: "👋 我的平台",
+    },
+    {
+      title: "📺 我的追番",
     },
     {
       title: "📫 与我联系",
@@ -322,37 +310,33 @@ export default {
   ],
   teleCards: [
     {
-      title: "Email: idealclover@163.com",
-      url: "mailto:idealclover@163.com",
-      iconClass: "mail_s",
-      iconInfoClass: "mail",
+      title: "Email: ferxalhhh@gmail.com",
+      url: "mailto:ferxalhhh@gmail.com",
+      icon: "/icons/email.svg",
       textStyle: "font-normal",
       bgStyle:
         "bg-primary hover:bg-primary-focus shadow-accent hover:shadow-gray-500",
     },
     {
-      title: "QQ: 1455169173",
-      url: "http://wpa.qq.com/msgrd?v=3&uin=1455169173&site=qq&menu=yes",
-      iconClass: "QQ_s",
-      iconInfoClass: "QQ",
+      title: "QQ: 2302536568",
+      url: "http://wpa.qq.com/msgrd?v=3&uin=2302536568&site=qq&menu=yes",
+      icon: "/icons/QQ.svg",
       textStyle: "font-normal",
       bgStyle:
         "bg-primary hover:bg-primary-focus shadow-accent hover:shadow-gray-500",
     },
     {
-      title: "Telegram: @idealclover",
-      url: "http://t.me/idealclover",
-      iconClass: "telegram_s",
-      iconInfoClass: "telegram",
+      title: "Telegram: https://t.me/Ferxalhhh",
+      url: "https://t.me/Ferxalhhh",
+      icon: "/icons/telegram.svg",
       textStyle: "font-normal",
       bgStyle:
         "bg-primary hover:bg-primary-focus shadow-accent hover:shadow-gray-500",
     },
     {
-      title: "Twitter: @idealclover",
-      url: "https://twitter.com/idealclover",
-      iconClass: "twitter_s",
-      iconInfoClass: "twitter",
+      title: "Twitter: @ferxal404",
+      url: "https://twitter.com/ferxal404",
+      icon: "/icons/twitter-x-logo.svg",
       textStyle: "font-normal",
       bgStyle:
         "bg-primary hover:bg-primary-focus shadow-accent hover:shadow-gray-500",

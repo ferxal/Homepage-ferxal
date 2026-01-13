@@ -17,26 +17,30 @@ interface Props {
 const { socialTitleInfo, primaryCards, contactTitleInfo, teleCards } = Astro.props;
 ---
 
-<!-- 关注翠翠 (移动端专用) -->
-<div class="md:hidden col-span-4">
-  <SectionCard {...socialTitleInfo} />
+<!-- 关注我 -->
+<div class="col-span-4 p-6 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 dark:border-neutral-700/40 shadow-2xl shadow-black/5 mb-12">
+  <SectionCard {...socialTitleInfo} className="!mb-6 !lg:w-full" />
+  <div class="grid grid-cols-4 gap-x-6">
+    {
+      primaryCards.map((card) => (
+        <div class="sm:col-span-2 col-span-4 lg:col-span-2">
+          <SocialCard {...card} className="!mb-0" />
+        </div>
+      ))
+    }
+  </div>
 </div>
-{
-  primaryCards.map((card) => (
-    <div class="md:hidden sm:col-span-2 col-span-4">
-      <SocialCard {...card} />
-    </div>
-  ))
-}
 
 <!-- 联系方式 -->
-<div class="col-span-4">
-  <SectionCard {...contactTitleInfo} />
+<div class="col-span-4 p-6 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 dark:border-neutral-700/40 shadow-2xl shadow-black/5 mb-12">
+  <SectionCard {...contactTitleInfo} className="!mb-6 !lg:w-full" />
+  <div class="grid grid-cols-4 gap-x-6 gap-y-6">
+    {
+      teleCards.map((card) => (
+        <div class="col-span-4 md:col-span-2">
+          <ContactCard {...card} className="!mb-0" />
+        </div>
+      ))
+    }
+  </div>
 </div>
-{
-  teleCards.map((card) => (
-    <div class="col-span-4 md:col-span-2">
-      <ContactCard {...card} />
-    </div>
-  ))
-}

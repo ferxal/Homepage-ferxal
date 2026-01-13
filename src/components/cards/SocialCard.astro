@@ -10,7 +10,7 @@ interface Props {
   textStyle?: string; // 文本样式
   btnText?: string;   // 按钮文案 (通常是粉丝数)
   btnStyle?: string;  // 按钮样式类名 (用于动态更新)
-  iconClass?: string; // 图标类名
+  icon?: string;      // 图标路径
   className?: string; // 额外的自定义类名
 }
 
@@ -21,54 +21,40 @@ const {
   textStyle = "", 
   btnText = "", 
   btnStyle = "", 
-  iconClass = "",
+  icon = "",
   className = ""
 } = Astro.props;
 ---
 
 <a href={url} target="_blank" class:list={["block", className]}>
-  <div
-    class:list={[
-      "card max-lg:card-compact rounded-xl flex justify-center shadow-xl shadow-accent w-full lg:w-[26rem] md:h-[4.25rem] lg:h-[5rem] mb-8 transition-all duration-300 hover:scale-[1.02]",
-      bgStyle,
-    ]}
-  >
-    <div class="card-body justify-center py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          {iconClass && <div class:list={[iconClass, "w-8 h-8 mr-3"]} />}
-          <span
-            class:list={[
-              textStyle,
-              "text-lg font-medium whitespace-nowrap",
-            ]}
-          >
-            {title}
-          </span>
-        </div>
-        {
-          btnText && (
-            <span class:list={[btnStyle, "text-sm opacity-80"]}>
-              {btnText}
+  <div class:list={["card card-compact rounded-2xl flex justify-center shadow-md w-full h-[3.5rem] lg:h-[4rem] mb-4 transition-all duration-300 hover:scale-[1.02]", bgStyle]}>
+      <div class="card-body justify-center py-2 px-4">
+        <div class="flex items-center justify-between gap-2 overflow-hidden">
+          <div class="flex items-center min-w-0">
+            {icon && <img src={icon} class="w-6 h-6 mr-2 shrink-0 brightness-0 invert" alt={title} />}
+            <span
+              class:list={[
+                textStyle,
+                "text-base font-medium truncate",
+              ]}
+            >
+              {title}
             </span>
-          )
-        }
+          </div>
+          {
+            btnText && (
+              <span class:list={[btnStyle, "text-xs opacity-80 shrink-0"]}>
+                {btnText}
+              </span>
+            )
+          }
+        </div>
       </div>
     </div>
-  </div>
 </a>
 
 <style>
   .zhihu, .bili, .github, .netease, .jike, .coolapk, .sspai, .Steam {
-    background: url("https://image.idealclover.cn/projects/Homepage/icons/icons.png") no-repeat;
-    background-size: 512px 512px;
+    display: none;
   }
-  .zhihu { background-position: -416px -0px; }
-  .bili { background-position: -448px -0px; }
-  .github { background-position: -480px -0px; }
-  .jike { background-position: -256px -0px; }
-  .coolapk { background-position: -288px -0px; }
-  .sspai { background-position: -320px -0px; }
-  .Steam { background-position: -352px -0px; }
-  .netease { background-position: -384px -0px; }
 </style>

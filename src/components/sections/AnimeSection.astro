@@ -1,0 +1,44 @@
+---
+import SectionCard from "../cards/SectionCard.astro";
+import AnimeCard from "../cards/AnimeCard.astro";
+import zh from "../../data/locales/zh";
+import type { AnimeItem } from "../../data/anime";
+
+interface Props {
+  titleInfo?: {
+    title: string;
+    desc?: string;
+    url?: string;
+  };
+  animeList: AnimeItem[];
+  className?: string;
+}
+
+const { titleInfo, animeList, className = "" } = Astro.props;
+
+const locale = zh;
+
+// Default title info if not provided
+const defaultTitleInfo = {
+  title: locale.components.anime.title,
+  desc: locale.components.anime.subtitle,
+  url: "https://bgm.tv/",
+};
+
+const finalTitleInfo = titleInfo || defaultTitleInfo;
+---
+
+<div class:list={["col-span-4 p-6 bg-white/40 dark:bg-neutral-900/40 backdrop-blur-xl rounded-[2.5rem] border border-white/40 dark:border-neutral-700/40 shadow-2xl shadow-black/5 mb-12", className]}>
+  <SectionCard {...finalTitleInfo} className="!mb-6 !lg:w-full" />
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+    {
+      animeList.length > 0 ? (
+        animeList.map((anime) => <AnimeCard {...anime} />)
+      ) : (
+        <div class="col-span-full py-10 text-center opacity-50">
+          {locale.components.anime.empty}
+        </div>
+      )
+    }
+  </div>
+</div>

@@ -8,8 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-
-    "prebuild": "node build/prebuild",
+    "prebuild": "node build/fetchBangumi.js && node build/prebuild",
     "fontmin": "node build/fontmin",
     "postbuild": "npm run fontmin && node build/postbuild"
   },
@@ -22,6 +21,7 @@
     "typescript": "^5.5.3"
   },
   "devDependencies": {
+    "@types/node": "^25.0.8",
     "fontmin": "^1.1.0",
     "terser": "^5.31.1"
   }

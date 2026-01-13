@@ -1,10 +1,8 @@
 ---
 /**
  * Footer 组件
- * 页面底部版权和链接信息
+ * 页面底部信息
  */
-import locale from "../data/locales/zh";
-
 interface Props {
   className?: string;
 }
@@ -12,53 +10,13 @@ interface Props {
 const { className } = Astro.props;
 ---
 
-<footer class:list={["text-center py-10 opacity-60 text-sm", className]}>
+<footer class:list={["text-center py-10 text-white/70 text-sm", className]}>
   <div class="mb-2">
-    {locale.footer.madeWith}
+    Powered By
     <a
-      href="https://idealclover.top"
+      href="https://github.com/idealclover/Homepage"
       target="_blank"
-      class="text-primary hover:underline font-medium">idealclover</a
+      class="text-white hover:text-white/100 hover:underline font-bold transition-colors">Homepage</a
     >
-  </div>
-  <div class="mb-2">
-    {locale.footer.poweredBy}
-    <a
-      href="https://tailwindcss.com/"
-      target="_blank"
-      class="text-primary hover:underline font-medium">tailwindcss</a
-    >
-    <span class="mx-1">&</span>
-    <a
-      href="https://astro.build/"
-      target="_blank"
-      class="text-primary hover:underline font-medium">astro</a
-    >
-  </div>
-  <div class="mb-2">
-    {locale.footer.inspiredBy}
-    <a
-      href="https://bento.me"
-      target="_blank"
-      class="text-primary hover:underline font-medium">bento.me</a
-    >
-  </div>
-  <div class="flex flex-wrap justify-center gap-x-4">
-    <div class="beian">
-      <a
-        href={locale.footer.icpUrl}
-        rel="noreferrer"
-        target="_blank"
-        class="hover:text-primary transition-colors">{locale.footer.icp}</a
-      >
-    </div>
-    <div class="beian">
-      <a
-        href={locale.footer.policeUrl}
-        rel="noreferrer"
-        target="_blank"
-        class="hover:text-primary transition-colors">{locale.footer.police}</a
-      >
-    </div>
   </div>
 </footer>

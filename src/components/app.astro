@@ -2,14 +2,10 @@
 import Profile from "./Profile.astro";
 import Footer from "./Footer.astro";
 import Scripts from "./Scripts.astro";
-import HeroSection from "./sections/HeroSection.astro";
-import ProjectSection from "./sections/ProjectSection.astro";
-import DiarySection from "./sections/DiarySection.astro";
-import MusicSection from "./sections/MusicSection.astro";
 import ContactSection from "./sections/ContactSection.astro";
-import SectionCard from "./cards/SectionCard.astro";
-import Articles_List from "./articles_list.astro";
+import AnimeSection from "./sections/AnimeSection.astro";
 import info from "../data/info";
+import animeList from "../data/anime";
 ---
 
 <div class="container m-auto lg:max-xl:w-min main">
@@ -21,39 +17,44 @@ import info from "../data/info";
     <main>
       <div class="pt-10 xl:pt-20"></div>
       <div class="grid grid-cols-4 gap-x-4 lg:gap-x-8 lg:w-[54rem]">
-        <HeroSection
+        <!-- <HeroSection
           titleCard={info.titleCard}
           blogCard={info.blogCard}
           primaryCards={info.primaryCards}
-        />
+        /> -->
 
         <!-- 文章列表 -->
-        <div class="col-span-4">
+        <!-- <div class="col-span-4">
           <SectionCard {...info.sectionTitles[0]} />
           <Articles_List />
-        </div>
+        </div> -->
 
-        <ProjectSection
+        <!-- <ProjectSection
           titleInfo={info.sectionTitles[1]}
           projectCardStart={info.projectCardStart}
           projectCards={info.projectCards}
           projectCardEnd={info.projectCardEnd}
-        />
+        /> -->
 
-        <DiarySection
+        <!-- <DiarySection
           titleInfo={info.sectionTitles[2]}
           cards={info.diaryCards}
-        />
+        /> -->
 
-        <MusicSection
+        <!-- <MusicSection
           titleInfo={info.sectionTitles[3]}
           musicCards={info.musicCards}
+        /> -->
+
+        <AnimeSection
+          titleInfo={info.sectionTitles[5]}
+          animeList={animeList}
         />
 
         <ContactSection
           socialTitleInfo={info.sectionTitles[4]}
           primaryCards={info.primaryCards}
-          contactTitleInfo={info.sectionTitles[5]}
+          contactTitleInfo={info.sectionTitles[6]}
           teleCards={info.teleCards}
         />
       </div>

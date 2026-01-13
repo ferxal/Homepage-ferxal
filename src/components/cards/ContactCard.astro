@@ -6,7 +6,7 @@
 interface Props {
   title: string;      // 联系方式类型 (如 "Email", "QQ")
   url: string;        // 链接
-  iconClass?: string; // 图标类名 (如 "mail_s")
+  icon?: string;      // 图标路径
   bgStyle?: string;   // 背景样式
   textStyle?: string; // 文本样式
   btnText?: string;   // 按钮文案
@@ -17,7 +17,7 @@ interface Props {
 const { 
   title, 
   url, 
-  iconClass = "", 
+  icon = "", 
   bgStyle = "bg-white", 
   textStyle = "", 
   btnText = "", 
@@ -27,44 +27,34 @@ const {
 ---
 
 <a href={url} target="_blank" class:list={["block group", className]}>
-  <div
-    class:list={[
-      "card max-lg:card-compact rounded-xl flex justify-center shadow-xl shadow-accent w-full lg:w-[26rem] md:h-[4.25rem] lg:h-[5rem] mb-8 transition-all duration-300 hover:scale-[1.02]",
-      bgStyle,
-    ]}
-  >
-    <div class="card-body justify-center py-4">
-      <div class="flex items-center justify-between">
-        <div class="flex items-center">
-          {iconClass && <div class:list={[iconClass, "w-8 h-8 mr-3"]} />}
-          <span
-            class:list={[
-              textStyle,
-              "text-lg font-medium whitespace-nowrap",
-            ]}
-          >
-            {title}
-          </span>
-        </div>
-        {
-          btnText && (
-            <span class:list={[btnStyle, "text-sm opacity-80"]}>
-              {btnText}
+  <div class:list={["card card-compact rounded-2xl flex justify-center shadow-md w-full h-[3.5rem] lg:h-[4rem] mb-4 transition-all duration-300 hover:scale-[1.02]", bgStyle]}>
+      <div class="card-body justify-center py-2 px-4">
+        <div class="flex items-center justify-between gap-2 overflow-hidden">
+          <div class="flex items-center min-w-0">
+            {icon && <img src={icon} class="w-6 h-6 mr-2 shrink-0 brightness-0 invert" alt={title} />}
+            <span
+              class:list={[
+                textStyle,
+                "text-base font-medium truncate",
+              ]}
+            >
+              {title}
             </span>
-          )
-        }
+          </div>
+          {
+            btnText && (
+              <span class:list={[btnStyle, "text-xs opacity-80 shrink-0"]}>
+                {btnText}
+              </span>
+            )
+          }
+        </div>
       </div>
     </div>
-  </div>
 </a>
 
 <style>
   .mail_s, .QQ_s, .telegram_s, .twitter_s {
-    background: url("https://image.idealclover.cn/projects/Homepage/icons/icons.png") no-repeat;
-    background-size: 512px 512px;
+    display: none;
   }
-  .mail_s { background-position: -0px -0px; }
-  .QQ_s { background-position: -32px -0px; }
-  .telegram_s { background-position: -64px -0px; }
-  .twitter_s { background-position: -96px -0px; }
 </style>

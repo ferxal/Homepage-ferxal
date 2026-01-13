@@ -3,12 +3,11 @@
  * Scripts 组件
  * 集中管理页面所需的客户端脚本
  */
+import updateInfo from "../data/update";
+import locale from "../data/locales/zh";
 ---
 
-<script>
-  import updateInfo from "../data/update";
-  import locale from "../data/locales/zh";
-
+<script define:vars={{ updateInfo, locale }}>
   /**
    * 更新粉丝数逻辑
    */

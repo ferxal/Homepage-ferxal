@@ -29,26 +29,6 @@ export default {
   },
 
   /**
-   * 页脚相关文本
-   */
-  footer: {
-    /** "Made with ... by" 的前缀/后缀部分 */
-    madeWith: "made with ❤️ by",
-    /** "Powered by" 的前缀 */
-    poweredBy: "🚀 powered by",
-    /** "Inspired by" 的前缀 */
-    inspiredBy: "💡 inspired by",
-    /** ICP 备案号 */
-    icp: "京ICP备2024045824号",
-    /** ICP 备案链接 */
-    icpUrl: "https://beian.miit.gov.cn",
-    /** 公安备案号 */
-    police: "京公网安备11010502054688号",
-    /** 公安备案链接 */
-    policeUrl: "https://beian.mps.gov.cn/#/query/webSearch?code=11010502054688",
-  },
-
-  /**
    * 客户端脚本使用的文本
    */
   scripts: {
@@ -69,6 +49,21 @@ export default {
     articles: {
       title: "文章列表",
       viewMore: "查看更多",
+    },
+    /** 追番组件 */
+    anime: {
+      title: "正在追",
+      subtitle: "番剧观看进度",
+      status: {
+        watching: "正在看",
+        completed: "已看完",
+        planned: "想看",
+        onhold: "搁置",
+        dropped: "抛弃",
+      },
+      year: "年份",
+      studio: "制作",
+      empty: "暂时没有番剧数据",
     },
   },
 };
