@@ -28,6 +28,10 @@ import locale from "../data/locales/zh";
 
   // 页面加载完成后执行
   document.addEventListener("DOMContentLoaded", () => {
-    updateFollowerCounts();
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(() => updateFollowerCounts());
+    } else {
+      setTimeout(updateFollowerCounts, 1000);
+    }
   });
 </script>

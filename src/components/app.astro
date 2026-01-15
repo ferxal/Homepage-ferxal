@@ -17,46 +17,17 @@ import animeList from "../data/anime";
     <main>
       <div class="pt-10 xl:pt-20"></div>
       <div class="grid grid-cols-4 gap-x-4 lg:gap-x-8 lg:w-[54rem]">
-        <!-- <HeroSection
-          titleCard={info.titleCard}
-          blogCard={info.blogCard}
-          primaryCards={info.primaryCards}
-        /> -->
-
-        <!-- 文章列表 -->
-        <!-- <div class="col-span-4">
-          <SectionCard {...info.sectionTitles[0]} />
-          <Articles_List />
-        </div> -->
-
-        <!-- <ProjectSection
-          titleInfo={info.sectionTitles[1]}
-          projectCardStart={info.projectCardStart}
-          projectCards={info.projectCards}
-          projectCardEnd={info.projectCardEnd}
-        /> -->
-
-        <!-- <DiarySection
-          titleInfo={info.sectionTitles[2]}
-          cards={info.diaryCards}
-        /> -->
-
-        <!-- <MusicSection
-          titleInfo={info.sectionTitles[3]}
-          musicCards={info.musicCards}
-        /> -->
-
         <AnimeSection
           titleInfo={info.sectionTitles[5]}
           animeList={animeList}
         />
 
-        <!-- <ContactSection
+        <ContactSection
           socialTitleInfo={info.sectionTitles[4]}
           primaryCards={info.primaryCards}
           contactTitleInfo={info.sectionTitles[6]}
           teleCards={info.teleCards}
-        /> -->
+        />
       </div>
 
       <Footer />
