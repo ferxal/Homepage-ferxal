@@ -31,9 +31,17 @@ import locale from "../data/locales/zh";
     <link rel="dns-prefetch" href="//www.chenhen.top" />
 
     <!-- 预连接关键域名 -->
-    <link rel="preconnect" href="https://eopfapi.acofork.com" />
-    <link rel="preconnect" href="https://api.1t.nz" />
-    <link rel="preconnect" href="https://image.idealclover.cn" />
+    <link rel="preconnect" href="https://eopfapi.acofork.com" crossorigin />
+    <link rel="preconnect" href="https://api.1t.nz" crossorigin />
+    <link rel="preconnect" href="https://image.idealclover.cn" crossorigin />
+    <link rel="dns-prefetch" href="https://eopfapi.acofork.com" />
+    <link rel="dns-prefetch" href="https://api.1t.nz" />
+    <link rel="dns-prefetch" href="https://image.idealclover.cn" />
+
+    <!-- 预加载 LCP 关键资源 -->
+    <link rel="preload" as="image" href="https://eopfapi.acofork.com/pic?img=ua" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://image.idealclover.cn/projects/Homepage/avatar.jpg" fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff2" href="https://image.idealclover.cn/projects/Homepage/fonts/MaoKenZhuYuanTi.woff2?v=241202" crossorigin />
 
     <style is:inline>
       /* 关键 CSS 内联 */
@@ -42,15 +50,33 @@ import locale from "../data/locales/zh";
         --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
       }
       html {
-        background-color: #171717; /* 设置 HTML 背景色作为底层兜底 */
+        background-color: #171717;
       }
       body {
         margin: 0;
         padding: 0;
         min-height: 100vh;
-        background: transparent !important; /* 确保 body 透明，露出伪元素背景 */
+        background: transparent !important;
+        /* 避免字体加载导致的闪烁 */
+        font-family: system-ui, -apple-system, sans-serif;
       }
     </style>
+
+    <script is:inline>
+      // 异步加载非关键 CSS
+      window.addEventListener('load', () => {
+        const loadDeferredStyles = () => {
+          const addTag = (url) => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = url;
+            document.head.appendChild(link);
+          };
+          // 如果有外部非关键 CSS，可以在这里添加
+        };
+        loadDeferredStyles();
+      });
+    </script>
 
     <style>
       @font-face {

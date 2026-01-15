@@ -21,6 +21,9 @@ const { imgUrl, title, desc } = Astro.props;
       class="w-32 h-32 md:w-48 md:h-48 rounded-full shadow-2xl shadow-accent/20 transition-transform duration-500 hover:rotate-12"
       src={imgUrl}
       alt={title}
+      loading="eager"
+      decoding="sync"
+      fetchpriority="high"
     />
     <div class="pt-8"></div>
     <h1 class="text-4xl font-extrabold text-white drop-shadow-lg">{title}</h1>

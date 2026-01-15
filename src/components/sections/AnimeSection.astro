@@ -33,7 +33,7 @@ const finalTitleInfo = titleInfo || defaultTitleInfo;
   <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     {
       animeList.length > 0 ? (
-        animeList.map((anime) => <AnimeCard {...anime} />)
+        animeList.map((anime, index) => <AnimeCard {...anime} index={index} />)
       ) : (
         <div class="col-span-full py-10 text-center opacity-50">
           {locale.components.anime.empty}
