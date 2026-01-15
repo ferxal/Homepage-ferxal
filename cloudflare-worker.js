@@ -20,7 +20,24 @@ export default {
         { id: 3, label: "watching" }
       ];
 
+      // 尝试从缓存中获取（Cloudflare Workers 默认不自动缓存 fetch，这里我们手动处理 ETag）
+      const clientETag = request.headers.get("If-None-Match");
+      
       let allAnimeList = [];
+
+      // 简单的时间戳 ETag（实际生产环境建议根据数据内容生成 hash）
+      const currentETag = `W/"anime-list-${new Date().getHours()}"`;
+
+      if (clientETag === currentETag) {
+        return new Response(null, {
+          status: 304,
+          headers: {
+            ...corsHeaders,
+            "ETag": currentETag,
+            "Cache-Control": "public, max-age=3600",
+          }
+        });
+      }
 
       for (const type of statusTypes) {
         const response = await fetch(
@@ -96,6 +113,8 @@ export default {
       return new Response(JSON.stringify(allAnimeList), {
         headers: {
           "Content-Type": "application/json",
+          "ETag": currentETag,
+          "Cache-Control": "public, max-age=3600, stale-while-revalidate=600",
           ...corsHeaders
         },
       });

@@ -29,11 +29,33 @@ import locale from "../data/locales/zh";
     <link rel="icon" type="image/png" sizes="16x16" href=`${Astro.site}/favicons/avatar.png` />
     <link rel="manifest" href=`${Astro.site}/favicons/site.webmanifest` />
     <link rel="dns-prefetch" href="//www.chenhen.top" />
+
+    <!-- 预连接关键域名 -->
+    <link rel="preconnect" href="https://eopfapi.acofork.com" />
+    <link rel="preconnect" href="https://api.1t.nz" />
+    <link rel="preconnect" href="https://image.idealclover.cn" />
+
+    <style is:inline>
+      /* 关键 CSS 内联 */
+      :root {
+        --accent: 124, 58, 237;
+        --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+      }
+      html {
+        background-color: #171717; /* 设置 HTML 背景色作为底层兜底 */
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        background: transparent !important; /* 确保 body 透明，露出伪元素背景 */
+      }
+    </style>
+
     <style>
       @font-face {
         font-family: "MaokenZhuyuanTi";
         src: url(https://image.idealclover.cn/projects/Homepage/fonts/MaoKenZhuYuanTi.woff2?v=241202);
-        /* src: url(./fonts/MaoKenZhuYuanTi.ttf); */
         font-display: swap;
       }
 
@@ -42,35 +64,29 @@ import locale from "../data/locales/zh";
           auto;
         font-family: "MaokenZhuyuanTi";
         overflow-x: hidden;
-        min-height: 100vh;
       }
 
       body::before {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background-image: url("https://eopfapi.acofork.com/pic?img=ua");
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        background-attachment: fixed;
         z-index: -2;
+        pointer-events: none;
       }
 
       body::after {
         content: "";
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(10px) saturate(180%);
         -webkit-backdrop-filter: blur(10px) saturate(180%);
         z-index: -1;
+        pointer-events: none;
       }
 
       @media (prefers-color-scheme: dark) {
